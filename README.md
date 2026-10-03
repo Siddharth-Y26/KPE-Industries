@@ -92,38 +92,63 @@ Server-side settings never go in an `.env` file that the build reads:
 
 `npm run deploy:pages` builds the site for the `/KPE-Industries/` sub-folder and pushes
 the result to the `gh-pages` branch, which GitHub serves. It is for showing the site
-before the domain exists, and it differs from the real site in three ways:
+before the domain exists, and it differs from the real site in four ways:
 
 - **The enquiry form does not send.** GitHub Pages serves files only, so the enquiry
   endpoint does not run. The form says so and points to phone and email.
+- **The WhatsApp number is a placeholder.** The preview uses the phone number from the
+  company profile so that the WhatsApp buttons can be seen. The real site shows them
+  only once the confirmed number is set in `.env.production`.
 - **No security headers.** GitHub Pages cannot set the Content-Security-Policy and the
   other headers that Cloudflare will send.
 - **Not indexed.** The preview asks search engines to stay away, so it does not compete
   with the real domain later.
+
+To update the preview after a change: commit, push `main`, then run
+`npm run deploy:pages`. GitHub takes a minute or two to serve the new version, and
+browsers may keep the old one for up to ten minutes.
 
 Once the site is live on its domain, turn GitHub Pages off and delete the `gh-pages`
 branch.
 
 ## Launch steps
 
-1. **Domain.** The business owner buys the domain in an account they control, with
-   two-factor authentication, registrar lock and auto-renewal switched on.
+The domain has not been bought yet. Everything below waits on step 1.
+
+1. **Domain.** The business owner buys the domain in an account they control, using an
+   email address and phone number the business will keep. Switch on two-factor
+   authentication, registrar lock and auto-renewal. A `.in` name also needs the
+   registry's identity check (e-KYC) soon after purchase.
 2. **Cloudflare.** Create the business's Cloudflare account, add the domain, and point
-   the domain's nameservers at Cloudflare.
+   the domain's nameservers at Cloudflare. This is done at the registrar and can take
+   a few hours to take effect.
 3. **Email.** Create a Resend account and verify the domain (this adds SPF and DKIM
    records). Set `EMAIL_FROM` to an address on the domain, such as
    `KPE Website <enquiries@your-domain>`. Enquiries are delivered to `EMAIL_TO` with the
    enquirer as reply-to. The existing Yahoo inbox keeps working; no MX records change.
 4. **Turnstile.** Create a Turnstile widget for the domain. Put the site key in
    `.env.production` and the secret key in `wrangler secret put`.
-5. **Settings.** Fill in `.env.production` and the `vars` in `wrangler.jsonc`.
-6. **Deploy.** `npx wrangler login`, then `npm run deploy`.
-7. **Custom domain.** In the Cloudflare dashboard, attach the domain to the
-   `kpe-website` Worker. Turn on "Always Use HTTPS".
+5. **Settings.** Create `.env.production` from `.env.example` with the site URL
+   (`https://your-domain`), the confirmed WhatsApp number and the Turnstile site key.
+   Leave `NEXT_PUBLIC_BASE_PATH` and `NEXT_PUBLIC_STATIC_PREVIEW` blank: they are for
+   the GitHub Pages preview only. Fill in `EMAIL_FROM` in `wrangler.jsonc`.
+6. **Custom domain.** Add the domain to `wrangler.jsonc` so the deploy attaches it:
+
+   ```jsonc
+   "routes": [
+     { "pattern": "your-domain", "custom_domain": true },
+     { "pattern": "www.your-domain", "custom_domain": true }
+   ]
+   ```
+
+7. **Deploy.** `npx wrangler login`, then `npm run deploy`. In the Cloudflare dashboard,
+   turn on "Always Use HTTPS" and add a redirect rule from `www` to the bare domain.
 8. **WAF.** Keep Cloudflare's managed rules on. Add one rate-limiting rule for
    `/api/enquiry` as a second layer behind the limit in `wrangler.jsonc`.
 9. **Check.** Send a real enquiry and confirm it arrives. Test the WhatsApp, phone,
    email and maps links on a phone. Submit the sitemap in Google Search Console.
+10. **Retire the preview.** Turn GitHub Pages off in the repository settings and delete
+    the `gh-pages` branch.
 
 ## Security
 
