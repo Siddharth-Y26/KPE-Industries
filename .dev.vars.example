@@ -1,0 +1,12 @@
+# Copy to .dev.vars for `npm run preview`. Never committed.
+
+# Print the enquiry email to the terminal instead of sending it.
+EMAIL_DRY_RUN=true
+
+# To send real email locally, set EMAIL_DRY_RUN=false and fill these in.
+EMAIL_FROM=
+EMAIL_TO=
+EMAIL_API_KEY=
+
+# Turnstile test secret that always passes. Leave blank to skip the check.
+# TURNSTILE_SECRET_KEY=1x0000000000000000000000000000000AA

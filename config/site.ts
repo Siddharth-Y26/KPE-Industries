@@ -1,0 +1,77 @@
+// Every value that may change without a redesign lives here or in an environment
+// variable. Company facts (services, projects, credentials) live in data/.
+
+const address = {
+  line1: "D3/125 Vibhav Khand",
+  line2: "Gomti Nagar",
+  city: "Lucknow",
+  state: "Uttar Pradesh",
+  postalCode: "226010",
+  country: "IN",
+};
+
+const mapsQuery = [address.line1, address.line2, address.city, address.state, address.postalCode].join(", ");
+
+export const siteConfig = {
+  name: "Krishna Power & Engineers",
+  shortName: "KPE",
+  tagline:
+    "Electrical, power and telecom infrastructure solutions for the power, steel and cement industries.",
+
+  // No trailing slash. Falls back to localhost so `npm run dev` works without setup.
+  // When the site lives in a sub-folder, this includes the sub-folder.
+  url: (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").replace(/\/+$/, ""),
+
+  // The sub-folder the site is served from, e.g. "/KPE-Industries" on GitHub Pages.
+  // Empty on the real domain.
+  basePath: (process.env.NEXT_PUBLIC_BASE_PATH || "").replace(/\/+$/, ""),
+
+  // True when the build is a preview on static-only hosting (GitHub Pages), where the
+  // enquiry endpoint does not exist. The form explains this instead of failing, and
+  // search engines are told not to index the preview.
+  staticPreview: process.env.NEXT_PUBLIC_STATIC_PREVIEW === "true",
+
+  contact: {
+    phoneDisplay: "+91 88080 55589",
+    phoneHref: "tel:+918808055589",
+    email: "krishnapower07@yahoo.in",
+    address,
+    mapsUrl:
+      process.env.NEXT_PUBLIC_MAPS_URL ||
+      `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapsQuery)}`,
+  },
+
+  whatsapp: {
+    // Digits only, international format. Blank hides every WhatsApp button.
+    number: (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "").replace(/\D/g, ""),
+    message: "Hello Krishna Power & Engineers, I would like to enquire about your services.",
+  },
+
+  enquiry: {
+    endpoint: process.env.NEXT_PUBLIC_FORM_ENDPOINT || "/api/enquiry",
+    turnstileSiteKey: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "",
+  },
+
+  analytics: {
+    cloudflareToken: process.env.NEXT_PUBLIC_CF_ANALYTICS_TOKEN || "",
+  },
+
+  // None supplied in the company profile. Add a URL to show the link in the footer.
+  social: {
+    linkedin: "",
+    facebook: "",
+    instagram: "",
+    youtube: "",
+  },
+} as const;
+
+export const navigation = [
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Services", href: "/services" },
+  { label: "Projects", href: "/projects" },
+  { label: "Capabilities", href: "/capabilities" },
+  { label: "Contact", href: "/contact" },
+] as const;
+
+export const enquiryHref = "/contact#enquiry";

@@ -1,0 +1,24 @@
+# dependencies
+node_modules/
+
+# build output
+.next/
+out/
+.wrangler/
+next-env.d.ts
+*.tsbuildinfo
+
+# secrets and local environment
+.env
+.env.local
+.env.*.local
+.env.production
+.dev.vars
+
+# the company profile contains private client names and addresses
+*.pptx
+
+# misc
+.DS_Store
+Thumbs.db
+npm-debug.log*

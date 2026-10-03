@@ -1,0 +1,100 @@
+{
+  "about/control-room-wide": {
+    "width": 1066,
+    "height": 620,
+    "widths": [
+      480,
+      800,
+      1066
+    ],
+    "version": "ad34c62b"
+  },
+  "about/switchgear-control-room": {
+    "width": 826,
+    "height": 984,
+    "widths": [
+      480,
+      826
+    ],
+    "version": "bb0363c5"
+  },
+  "gallery/cable-termination": {
+    "width": 488,
+    "height": 330,
+    "widths": [
+      488
+    ],
+    "version": "f7e1e792"
+  },
+  "gallery/cable-trays": {
+    "width": 488,
+    "height": 330,
+    "widths": [
+      488
+    ],
+    "version": "87c4aa2e"
+  },
+  "gallery/mcc-panels": {
+    "width": 488,
+    "height": 330,
+    "widths": [
+      488
+    ],
+    "version": "89ff2a3b"
+  },
+  "hero/transformer-erection": {
+    "width": 780,
+    "height": 550,
+    "widths": [
+      480,
+      780
+    ],
+    "version": "3ecc67cd"
+  },
+  "projects/transformer-testing": {
+    "width": 826,
+    "height": 500,
+    "widths": [
+      480,
+      826
+    ],
+    "version": "b55cd3c8"
+  },
+  "services/power-distribution": {
+    "width": 576,
+    "height": 350,
+    "widths": [
+      480,
+      576
+    ],
+    "version": "19b483ff"
+  },
+  "services/power-plants": {
+    "width": 780,
+    "height": 300,
+    "widths": [
+      480,
+      780
+    ],
+    "version": "d5ff92be"
+  },
+  "services/steel-industries": {
+    "width": 576,
+    "height": 350,
+    "widths": [
+      480,
+      576
+    ],
+    "version": "7cf652c6"
+  },
+  "services/telecom": {
+    "width": 1087,
+    "height": 1500,
+    "widths": [
+      480,
+      800,
+      1087
+    ],
+    "version": "810e3bdb"
+  }
+}
