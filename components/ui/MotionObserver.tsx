@@ -3,20 +3,30 @@
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
-const COUNT_DURATION = 1600;
+const COUNT_DURATION = 2000;
+// Lets the section's fade-in finish first, so the count is seen from its start.
+const COUNT_DELAY = 300;
+// The most time one frame may advance the count. If the phone stalls for a moment, the
+// count pauses and carries on instead of leaping ahead.
+const MAX_FRAME_STEP = 34;
 
 // Counts an element's text from 0 to its data-countup value. Plain script rather than
 // a CSS counter animation, which iOS browsers do not animate.
 function countUp(element: HTMLElement) {
   const target = Number(element.dataset.countup);
-  const start = performance.now();
+  let elapsed = 0;
+  let previous: number | null = null;
+
   const tick = (now: number) => {
-    const progress = Math.min(1, (now - start) / COUNT_DURATION);
-    const eased = 1 - Math.pow(1 - progress, 4);
+    if (previous !== null) elapsed += Math.min(now - previous, MAX_FRAME_STEP);
+    previous = now;
+    const progress = Math.min(1, elapsed / COUNT_DURATION);
+    const eased = 1 - (1 - progress) ** 2;
     element.textContent = String(Math.round(target * eased));
     if (progress < 1) requestAnimationFrame(tick);
   };
-  requestAnimationFrame(tick);
+
+  window.setTimeout(() => requestAnimationFrame(tick), COUNT_DELAY);
 }
 
 // Reveals [data-reveal] elements and runs [data-countup] numbers as they scroll into view.
@@ -30,25 +40,31 @@ export function MotionObserver() {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     if (!("IntersectionObserver" in window)) return;
 
-    const options = { rootMargin: "0px 0px -8% 0px", threshold: 0.05 };
+    const reveals = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          entry.target.classList.remove("reveal-pending");
+          reveals.unobserve(entry.target);
+        }
+      },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.05 },
+    );
 
-    const reveals = new IntersectionObserver((entries) => {
-      for (const entry of entries) {
-        if (!entry.isIntersecting) continue;
-        entry.target.classList.remove("reveal-pending");
-        reveals.unobserve(entry.target);
-      }
-    }, options);
-
-    const counters = new IntersectionObserver((entries) => {
-      for (const entry of entries) {
-        if (!entry.isIntersecting) continue;
-        const element = entry.target as HTMLElement;
-        counters.unobserve(element);
-        element.dataset.counted = "true";
-        countUp(element);
-      }
-    }, options);
+    // A number starts counting only once it is fully on screen and clear of the bottom
+    // edge. Starting as it first peeks in would spend most of the count out of sight.
+    const counters = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          const element = entry.target as HTMLElement;
+          counters.unobserve(element);
+          element.dataset.counted = "true";
+          countUp(element);
+        }
+      },
+      { rootMargin: "0px 0px -12% 0px", threshold: 1 },
+    );
 
     for (const element of document.querySelectorAll<HTMLElement>("[data-reveal]")) {
       if (element.getBoundingClientRect().top > window.innerHeight) {
