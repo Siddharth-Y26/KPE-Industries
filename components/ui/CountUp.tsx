@@ -1,13 +1,22 @@
 import type { CSSProperties } from "react";
 
-// A number that counts up from zero (see .countup in globals.css).
-// The real value is ordinary text for screen readers and search engines; the animated
-// copy is presentation only.
+// A number that counts up from zero when it scrolls into view. MotionObserver drives
+// the animation; see .countup in globals.css.
+// The real value is separate, ordinary text for screen readers and search engines, and
+// the page shows the final number if the script never runs.
 export function CountUp({ value }: { value: number }) {
   return (
     <>
       <span className="sr-only">{value}</span>
-      <span aria-hidden="true" className="countup" style={{ "--to": value } as CSSProperties} />
+      <span
+        aria-hidden="true"
+        className="countup"
+        data-countup={value}
+        // Reserve the final width so nothing beside the number moves while it counts.
+        style={{ minWidth: `${String(value).length}ch` }}
+      >
+        {value}
+      </span>
     </>
   );
 }

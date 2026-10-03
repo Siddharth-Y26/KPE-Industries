@@ -128,28 +128,18 @@
 
 /* --- Motion ------------------------------------------------------------- */
 
-/* Number count-up. The final number is real text for assistive tech and search;
-   this is only the animated presentation of it. Without JavaScript it plays once
-   on load and rests on the final value. */
-@property --count {
-  syntax: "<integer>";
-  initial-value: 0;
-  inherits: false;
-}
-
+/* Number count-up. MotionObserver counts the number up from zero as it scrolls into
+   view. The number is hidden until the script takes over, so the final value never
+   flashes before the count starts. If the script never runs, the number shows itself
+   after a moment. */
 .countup {
-  --count: var(--to);
-  counter-reset: count var(--count);
+  display: inline-block;
   font-variant-numeric: tabular-nums;
 }
 
-.countup::after {
-  content: counter(count);
-}
-
-@keyframes countup {
-  from {
-    --count: 0;
+@keyframes countup-fallback {
+  to {
+    opacity: 1;
   }
 }
 
@@ -165,8 +155,9 @@
     scroll-behavior: smooth;
   }
 
-  .countup {
-    animation: countup 1.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  .countup:not(.countup-live) {
+    opacity: 0;
+    animation: countup-fallback 0s linear 2.5s forwards;
   }
 
   /* Set by MotionObserver on elements that start below the fold, then removed
@@ -174,10 +165,6 @@
   [data-reveal].reveal-pending {
     opacity: 0;
     transform: translateY(18px);
-  }
-
-  [data-reveal].reveal-pending .countup {
-    animation-play-state: paused;
   }
 
   [data-reveal] {
