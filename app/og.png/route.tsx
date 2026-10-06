@@ -1,3 +1,5 @@
+import { readFile } from "node:fs/promises";
+import path from "node:path";
 import { ImageResponse } from "next/og";
 import { siteConfig } from "@/config/site";
 
@@ -5,7 +7,9 @@ export const dynamic = "force-static";
 
 // The share image for links to the site, generated once at build time and exported as
 // /og.png. It is a route with a file extension so that it is served as image/png.
-export function GET() {
+export async function GET() {
+  const logo = await readFile(path.join(process.cwd(), "public", "logo.svg"), "base64");
+
   return new ImageResponse(
     (
       <div
@@ -21,10 +25,13 @@ export function GET() {
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
-          <svg width="72" height="72" viewBox="0 0 40 40">
-            <rect width="40" height="40" rx="2" fill="#f2a900" />
-            <path d="M22.5 6 11 22.2h7.2L16 34l12.8-17.2h-7.6L22.5 6Z" fill="#071528" />
-          </svg>
+          {/* eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text -- drawn into the PNG, not a page */}
+          <img
+            src={`data:image/svg+xml;base64,${logo}`}
+            width={88}
+            height={88}
+            style={{ borderRadius: 44, border: "2px solid rgba(255, 255, 255, 0.4)" }}
+          />
           <div style={{ display: "flex", fontSize: 26, letterSpacing: 6, color: "#8da9c4" }}>
             LUCKNOW, UTTAR PRADESH
           </div>

@@ -19,10 +19,11 @@ export function About({ full = false }: { full?: boolean }) {
             </h2>
             <div className="ticks mx-2.5 mt-12 lg:mx-0 lg:mr-10">
               <Photo
-                src="about/control-room-wide"
-                alt="Electrical switchgear line-up in a plant control room"
+                src="about/switchgear-line-up"
+                alt="An engineer at a switchgear line-up in a substation control room"
                 sizes="(min-width: 1024px) 44vw, 92vw"
-                className="aspect-[16/10]"
+                className="aspect-[4/3]"
+                position="50% 30%"
               />
               <span className="tick-end" aria-hidden="true" />
             </div>

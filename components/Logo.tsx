@@ -1,15 +1,18 @@
-// PLACEHOLDER IDENTITY. The company profile contains no logo, so this is a plain
-// wordmark with a bolt mark. Replace this component (and app/icon.svg) when the
-// client supplies a logo.
+import { siteConfig } from "@/config/site";
 
+// The company's KPE roundel, traced from the logo the client supplied. The drawing is
+// public/logo.svg; app/icon.svg (the browser tab icon) is a copy of the same file.
 export function LogoMark({ tone = "light", className = "h-10 w-10" }: { tone?: "light" | "dark"; className?: string }) {
-  const square = tone === "dark" ? "#f2a900" : "#0b2545";
-  const bolt = tone === "dark" ? "#071528" : "#f2a900";
   return (
-    <svg viewBox="0 0 40 40" aria-hidden="true" className={className}>
-      <rect width="40" height="40" rx="2" fill={square} />
-      <path d="M22.5 6 11 22.2h7.2L16 34l12.8-17.2h-7.6L22.5 6Z" fill={bolt} />
-    </svg>
+    // eslint-disable-next-line @next/next/no-img-element -- a static SVG; nothing for next/image to optimise
+    <img
+      src={`${siteConfig.basePath}/logo.svg`}
+      alt=""
+      width={200}
+      height={200}
+      // On navy the roundel's own blue is close to the background, so a pale ring marks its edge.
+      className={`rounded-full ${tone === "dark" ? "ring-1 ring-white/40" : ""} ${className}`}
+    />
   );
 }
 

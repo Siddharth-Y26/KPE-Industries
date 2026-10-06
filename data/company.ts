@@ -32,6 +32,41 @@ export const about = {
   ],
 } as const;
 
+// The home page slideshow, in the order shown. Captions say only what the photo shows.
+// `position` is the part of the photo kept in view when the frame crops it.
+export const heroSlides = [
+  {
+    image: "hero/double-pole-structure",
+    alt: "Double-pole structure with insulators and a ladder, against a clear sky",
+    caption: "Double-pole structure erection",
+    position: "50% 0%",
+  },
+  {
+    image: "hero/pole-mounted-transformer",
+    alt: "Transformer mounted on a double-pole structure beside a building, with a metering unit",
+    caption: "Pole-mounted transformer installation",
+    position: "50% 80%",
+  },
+  {
+    image: "hero/transformer-terminals",
+    alt: "Close view of the low-voltage bushings and terminal studs on a transformer",
+    caption: "Transformer low-voltage terminals",
+    position: "60% 50%",
+  },
+  {
+    image: "hero/transformer-metering",
+    alt: "Transformer on a pole-mounted platform, seen from below, with a metering unit",
+    caption: "Transformer and metering installation",
+    position: "50% 45%",
+  },
+  {
+    image: "hero/transformer-enclosure",
+    alt: "Transformer installed inside a steel mesh enclosure",
+    caption: "Transformer in a protective enclosure",
+    position: "50% 55%",
+  },
+] as const;
+
 export const heroStats = [
   { value: 48, unit: "", label: "Clients & projects", note: "on record" },
   { value: 80, unit: "MW", label: "Largest power plant project", note: "" },

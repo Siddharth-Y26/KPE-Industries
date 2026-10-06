@@ -40,18 +40,8 @@ export function Navbar() {
   return (
     <>
       <div className="hidden bg-navy-950 text-steel-200 lg:block">
-        <Container className="flex h-10 items-center justify-between text-[0.8rem]">
+        <Container className="flex h-10 items-center text-[0.8rem]">
           <p className="tracking-wide">Electrical, power and telecom infrastructure</p>
-          <div className="flex items-center gap-7">
-            <a href={contact.phoneHref} className="flex items-center gap-2 hover:text-white">
-              <Phone className="h-3.5 w-3.5 text-gold-500" aria-hidden="true" />
-              {contact.phoneDisplay}
-            </a>
-            <a href={`mailto:${contact.email}`} className="flex items-center gap-2 hover:text-white">
-              <Mail className="h-3.5 w-3.5 text-gold-500" aria-hidden="true" />
-              {contact.email}
-            </a>
-          </div>
         </Container>
       </div>
 

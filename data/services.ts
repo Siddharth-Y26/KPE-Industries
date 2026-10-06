@@ -60,7 +60,7 @@ export const services: Service[] = [
       "HT/LT installation",
     ],
     image: "services/power-distribution",
-    imageAlt: "Transmission towers and overhead power lines",
+    imageAlt: "Double-pole structure carrying overhead line hardware and a transformer",
   },
   {
     slug: "telecom",

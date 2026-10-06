@@ -6,8 +6,9 @@ phone call.
 
 **Status: preview.** A preview is published on GitHub Pages at
 https://siddharth-y26.github.io/KPE-Industries/. It is a stopgap: the real site goes on
-the company's own domain, hosted on Cloudflare (see [Launch steps](#launch-steps)).
-Some content is still placeholder: the logo, the photos, and the WhatsApp number.
+https://krishnapowereng.in, hosted on Cloudflare (see [Launch steps](#launch-steps)).
+Some content is still placeholder: the WhatsApp number, and the photos for power plants,
+steel industries and telecom, which still come from the company profile.
 
 ## How it is put together
 
@@ -56,7 +57,8 @@ the `out/` folder.
 | Capabilities, steel plant areas | `data/capabilities.ts` |
 | Enquiry form fields and limits | `lib/enquiry.ts` (used by the form and the server) |
 | A photo | Replace the file in `assets/photos/`, then `npm run images` |
-| Logo | `components/Logo.tsx` and `app/icon.svg` |
+| Home page slideshow: photos, captions, order | `heroSlides` in `data/company.ts` (photos in `assets/photos/hero/`) |
+| Logo | `public/logo.svg` and `app/icon.svg` (the same drawing) |
 | Colours and fonts | `app/globals.css`, `app/layout.tsx` |
 
 Company facts come from the KPE company profile. Do not add clients, figures,
@@ -64,7 +66,11 @@ certifications or claims the profile does not support.
 
 Photos are shown in a navy tint so that pictures of mixed quality read as one set.
 To show them in natural colour, set `TREATMENT` to `"natural"` in
-`components/ui/Photo.tsx`.
+`components/ui/Photo.tsx`. The home page slideshow already shows its photos in natural
+colour.
+
+Phone photos often carry a date stamp in a corner. Crop it off before the photo goes
+into `assets/photos/`.
 
 ## Settings
 
@@ -73,7 +79,7 @@ Browser-visible settings are baked in at build time. Put them in `.env.productio
 
 | Variable | Purpose |
 |---|---|
-| `NEXT_PUBLIC_SITE_URL` | Final address, e.g. `https://www.example.com`. Required to deploy. |
+| `NEXT_PUBLIC_SITE_URL` | Final address: `https://krishnapowereng.in`. Required to deploy. |
 | `NEXT_PUBLIC_WHATSAPP_NUMBER` | WhatsApp Business number, digits only. Blank hides all WhatsApp buttons. |
 | `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Cloudflare Turnstile site key for the form. |
 | `NEXT_PUBLIC_CF_ANALYTICS_TOKEN` | Cloudflare Web Analytics token. Blank means no analytics. |
@@ -113,34 +119,28 @@ branch.
 
 ## Launch steps
 
-The domain has not been bought yet. Everything below waits on step 1.
+The domain is `krishnapowereng.in`, bought through Hostinger. Hostinger is the
+registrar only: the site is not hosted there, so no Hostinger web hosting plan is needed.
 
-1. **Domain.** The business owner buys the domain in an account they control, using an
-   email address and phone number the business will keep. Switch on two-factor
-   authentication, registrar lock and auto-renewal. A `.in` name also needs the
-   registry's identity check (e-KYC) soon after purchase.
+1. **Domain.** Registered at Hostinger until October 2029. Keep the Hostinger account
+   on an email address and phone number the business will keep, with two-factor
+   authentication, registrar lock and auto-renewal switched on.
 2. **Cloudflare.** Create the business's Cloudflare account, add the domain, and point
-   the domain's nameservers at Cloudflare. This is done at the registrar and can take
-   a few hours to take effect.
+   the domain's nameservers at Cloudflare. This is done in Hostinger's domain settings
+   and can take a few hours to take effect.
 3. **Email.** Create a Resend account and verify the domain (this adds SPF and DKIM
-   records). Set `EMAIL_FROM` to an address on the domain, such as
-   `KPE Website <enquiries@your-domain>`. Enquiries are delivered to `EMAIL_TO` with the
-   enquirer as reply-to. The existing Yahoo inbox keeps working; no MX records change.
+   records). `EMAIL_FROM` in `wrangler.jsonc` is an address on the domain,
+   `KPE Website <enquiries@krishnapowereng.in>`. Enquiries are delivered to `EMAIL_TO`
+   with the enquirer as reply-to. The existing Yahoo inbox keeps working; no MX records
+   change.
 4. **Turnstile.** Create a Turnstile widget for the domain. Put the site key in
    `.env.production` and the secret key in `wrangler secret put`.
 5. **Settings.** Create `.env.production` from `.env.example` with the site URL
-   (`https://your-domain`), the confirmed WhatsApp number and the Turnstile site key.
-   Leave `NEXT_PUBLIC_BASE_PATH` and `NEXT_PUBLIC_STATIC_PREVIEW` blank: they are for
-   the GitHub Pages preview only. Fill in `EMAIL_FROM` in `wrangler.jsonc`.
-6. **Custom domain.** Add the domain to `wrangler.jsonc` so the deploy attaches it:
-
-   ```jsonc
-   "routes": [
-     { "pattern": "your-domain", "custom_domain": true },
-     { "pattern": "www.your-domain", "custom_domain": true }
-   ]
-   ```
-
+   (`https://krishnapowereng.in`), the confirmed WhatsApp number and the Turnstile site
+   key. Leave `NEXT_PUBLIC_BASE_PATH` and `NEXT_PUBLIC_STATIC_PREVIEW` blank: they are
+   for the GitHub Pages preview only.
+6. **Custom domain.** `routes` in `wrangler.jsonc` lists the domain and its `www` name,
+   so the deploy attaches both. It fails until step 2 has taken effect.
 7. **Deploy.** `npx wrangler login`, then `npm run deploy`. In the Cloudflare dashboard,
    turn on "Always Use HTTPS" and add a redirect rule from `www` to the bare domain.
 8. **WAF.** Keep Cloudflare's managed rules on. Add one rate-limiting rule for

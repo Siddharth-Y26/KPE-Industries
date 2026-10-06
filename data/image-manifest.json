@@ -1,14 +1,4 @@
 {
-  "about/control-room-wide": {
-    "width": 1066,
-    "height": 620,
-    "widths": [
-      480,
-      800,
-      1066
-    ],
-    "version": "ad34c62b"
-  },
   "about/switchgear-control-room": {
     "width": 826,
     "height": 984,
@@ -18,6 +8,15 @@
     ],
     "version": "bb0363c5"
   },
+  "about/switchgear-line-up": {
+    "width": 780,
+    "height": 1040,
+    "widths": [
+      480,
+      780
+    ],
+    "version": "89f98a37"
+  },
   "gallery/cable-termination": {
     "width": 488,
     "height": 330,
@@ -26,30 +25,74 @@
     ],
     "version": "f7e1e792"
   },
-  "gallery/cable-trays": {
-    "width": 488,
-    "height": 330,
-    "widths": [
-      488
-    ],
-    "version": "87c4aa2e"
-  },
-  "gallery/mcc-panels": {
-    "width": 488,
-    "height": 330,
-    "widths": [
-      488
-    ],
-    "version": "89ff2a3b"
-  },
-  "hero/transformer-erection": {
-    "width": 780,
-    "height": 550,
+  "gallery/transformer": {
+    "width": 960,
+    "height": 1152,
     "widths": [
       480,
-      780
+      800,
+      960
     ],
-    "version": "3ecc67cd"
+    "version": "a3044444"
+  },
+  "gallery/vcb-panel": {
+    "width": 960,
+    "height": 947,
+    "widths": [
+      480,
+      800,
+      960
+    ],
+    "version": "f4eb5a51"
+  },
+  "hero/double-pole-structure": {
+    "width": 960,
+    "height": 1280,
+    "widths": [
+      480,
+      800,
+      960
+    ],
+    "version": "5bd6ff32"
+  },
+  "hero/pole-mounted-transformer": {
+    "width": 960,
+    "height": 1152,
+    "widths": [
+      480,
+      800,
+      960
+    ],
+    "version": "26312959"
+  },
+  "hero/transformer-enclosure": {
+    "width": 826,
+    "height": 1152,
+    "widths": [
+      480,
+      826
+    ],
+    "version": "24795651"
+  },
+  "hero/transformer-metering": {
+    "width": 1204,
+    "height": 1600,
+    "widths": [
+      480,
+      800,
+      1204
+    ],
+    "version": "ba44b1b9"
+  },
+  "hero/transformer-terminals": {
+    "width": 1114,
+    "height": 845,
+    "widths": [
+      480,
+      800,
+      1114
+    ],
+    "version": "5156e4ff"
   },
   "projects/transformer-testing": {
     "width": 826,
@@ -61,13 +104,14 @@
     "version": "b55cd3c8"
   },
   "services/power-distribution": {
-    "width": 576,
-    "height": 350,
+    "width": 960,
+    "height": 1152,
     "widths": [
       480,
-      576
+      800,
+      960
     ],
-    "version": "19b483ff"
+    "version": "b9a6abd8"
   },
   "services/power-plants": {
     "width": 780,

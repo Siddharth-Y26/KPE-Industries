@@ -40,8 +40,16 @@ export const steelPlantAreas = [
 ] as const;
 
 export const capabilityPhotos = [
-  { image: "gallery/mcc-panels", alt: "Line-up of MCC and switchgear panels", caption: "MCC / switchgear panels" },
-  { image: "gallery/cable-trays", alt: "Cable trays routed through a plant building", caption: "Cable trays and bus duct" },
+  {
+    image: "gallery/transformer",
+    alt: "Transformer mounted on a double-pole structure, with its bushings and radiators in view",
+    caption: "Transformer installation",
+  },
+  {
+    image: "gallery/vcb-panel",
+    alt: "Front of a VCB panel, showing its mimic diagram, gas pressure gauge and trip and close buttons",
+    caption: "VCB panel",
+  },
   {
     image: "gallery/cable-termination",
     alt: "Technician on a ladder carrying out cable termination work",

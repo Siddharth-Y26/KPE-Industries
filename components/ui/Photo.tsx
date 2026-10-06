@@ -18,9 +18,22 @@ type PhotoProps = {
   className?: string;
   // Load eagerly: only for the image that is visible when the page opens.
   priority?: boolean;
+  // The part of the photo to keep in view when the frame crops it, as a CSS
+  // object-position such as "50% 20%". Defaults to the centre.
+  position?: string;
+  // Overrides TREATMENT for this one photo.
+  treatment?: "duotone" | "natural";
 };
 
-export function Photo({ src, alt, sizes, className = "", priority = false }: PhotoProps) {
+export function Photo({
+  src,
+  alt,
+  sizes,
+  className = "",
+  priority = false,
+  position,
+  treatment = TREATMENT,
+}: PhotoProps) {
   const entry = manifest[src as PhotoKey];
   if (!entry) throw new Error(`Photo "${src}" is not in data/image-manifest.json. Run "npm run images".`);
 
@@ -31,7 +44,7 @@ export function Photo({ src, alt, sizes, className = "", priority = false }: Pho
   const largest = entry.widths[entry.widths.length - 1];
 
   return (
-    <div className={`overflow-hidden ${TREATMENT === "duotone" ? "photo-duotone" : "bg-steel-100"} ${className}`}>
+    <div className={`overflow-hidden ${treatment === "duotone" ? "photo-duotone" : "bg-steel-100"} ${className}`}>
       <picture>
         <source type="image/avif" srcSet={srcSet("avif")} sizes={sizes} />
         <img
@@ -45,6 +58,7 @@ export function Photo({ src, alt, sizes, className = "", priority = false }: Pho
           fetchPriority={priority ? "high" : undefined}
           decoding="async"
           className="h-full w-full object-cover"
+          style={position ? { objectPosition: position } : undefined}
         />
       </picture>
     </div>

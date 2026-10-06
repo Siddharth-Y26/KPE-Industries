@@ -124,6 +124,43 @@
     border-right: 2px solid var(--color-gold-500);
     border-bottom: 2px solid var(--color-gold-500);
   }
+
+  /* Home page slideshow (components/HeroSlideshow.tsx). The photo fades into the navy
+     behind it: at its foot on phones, where the headline follows it, and on its left
+     edge on wide screens, where the headline sits beside it. */
+  .hero-stage {
+    -webkit-mask-image: linear-gradient(to bottom, #000 45%, transparent 94%);
+    mask-image: linear-gradient(to bottom, #000 45%, transparent 94%);
+  }
+
+  @media (min-width: 64rem) {
+    .hero-stage {
+      -webkit-mask-image: linear-gradient(to right, transparent, rgb(0 0 0 / 0.3) 16%, #000 44%);
+      mask-image: linear-gradient(to right, transparent, rgb(0 0 0 / 0.3) 16%, #000 44%);
+    }
+  }
+
+  /* Photos are stacked and cross-fade. */
+  .hero-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+  }
+
+  .hero-slide.is-active {
+    opacity: 1;
+  }
+
+  .hero-caption {
+    opacity: 0;
+    text-shadow: 0 1px 16px rgb(7 21 40 / 0.9);
+    transition: opacity 0.5s ease;
+  }
+
+  .hero-caption.is-active {
+    opacity: 1;
+  }
 }
 
 /* --- Motion ------------------------------------------------------------- */
@@ -147,6 +184,13 @@
   from {
     opacity: 0;
     transform: translateY(18px);
+  }
+}
+
+/* The slideshow's timer: the gold bar fills, and the next photo is shown when it ends. */
+@keyframes hero-progress {
+  from {
+    transform: scaleX(0);
   }
 }
 
@@ -177,5 +221,63 @@
   .hero-rise {
     animation: rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
     animation-delay: var(--rise-delay, 0ms);
+  }
+
+  /* The photo on show drifts slowly closer. One that is fading out keeps its zoom until
+     it is hidden (the delay), so nothing jumps. */
+  .hero-slide img {
+    transform-origin: 35% 40%;
+    transition: transform 0s linear 1.3s;
+  }
+
+  .hero-slide:nth-child(even) img {
+    transform-origin: 65% 55%;
+  }
+
+  .hero-slide.is-active img {
+    transform: scale(1.1);
+    transition: transform 10s linear;
+  }
+
+  /* Without this the first photo would start already zoomed in. */
+  @starting-style {
+    .hero-slide.is-active img {
+      transform: none;
+    }
+  }
+
+  .hero-caption {
+    transform: translateY(10px);
+    transition:
+      opacity 0.5s ease,
+      transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .hero-caption.is-active {
+    transform: none;
+    transition-delay: 0.3s;
+  }
+
+  .hero-progress.is-timed {
+    transform-origin: left;
+    animation: hero-progress 6s linear both;
+  }
+
+  .hero-controls[data-paused] .hero-progress,
+  .hero-controls:has(:focus-visible) .hero-progress {
+    animation-play-state: paused;
+  }
+
+  @media (hover: hover) {
+    .hero-controls:hover .hero-progress {
+      animation-play-state: paused;
+    }
+  }
+}
+
+/* With reduced motion the photos change only by hand, so there is nothing to pause. */
+@media (prefers-reduced-motion: reduce) {
+  .hero-toggle {
+    display: none;
   }
 }

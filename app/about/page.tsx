@@ -16,7 +16,7 @@ export const metadata = pageMetadata({
 export default function AboutPage() {
   return (
     <>
-      <PageHeader label="About" title="About Krishna Power & Engineers">
+      <PageHeader label="About" title="Krishna Power & Engineers">
         <p>{about.summary}</p>
       </PageHeader>
       <About full />
