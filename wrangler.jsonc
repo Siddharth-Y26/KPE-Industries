@@ -4,6 +4,16 @@
   "main": "worker/index.ts",
   "compatibility_date": "2026-09-01",
 
+  // The deploy attaches these and creates their DNS records. The domain must already
+  // be added to the Cloudflare account, with its nameservers pointed at Cloudflare.
+  "routes": [
+    { "pattern": "krishnapowereng.in", "custom_domain": true },
+    { "pattern": "www.krishnapowereng.in", "custom_domain": true }
+  ],
+  // The site is reachable on its own domain only, never on a *.workers.dev address.
+  "workers_dev": false,
+  "preview_urls": false,
+
   // The exported site. Static files are served straight from the edge and do not
   // invoke the Worker, so they stay up even if the Worker's quota is exhausted.
   "assets": {
@@ -26,7 +36,7 @@
   //   EMAIL_API_KEY, TURNSTILE_SECRET_KEY
   "vars": {
     // Must be an address on a domain verified with the email provider.
-    "EMAIL_FROM": "",
+    "EMAIL_FROM": "KPE Website <enquiries@krishnapowereng.in>",
     // The business inbox that receives enquiries.
     "EMAIL_TO": "krishnapower07@yahoo.in",
     // Extra origins allowed to post the form, comma separated. The site's own origin
