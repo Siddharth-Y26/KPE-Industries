@@ -4,11 +4,14 @@ Corporate website for Krishna Power & Engineers (KPE), Lucknow. Its job is to tu
 visitors into project enquiries: every page offers the enquiry form, WhatsApp and a
 phone call.
 
-**Status: preview.** A preview is published on GitHub Pages at
-https://siddharth-y26.github.io/KPE-Industries/. It is a stopgap: the real site goes on
-https://krishnapowereng.in, hosted on Cloudflare (see [Launch steps](#launch-steps)).
-Some content is still placeholder: the WhatsApp number, and the photos for power plants,
-steel industries and telecom, which still come from the company profile.
+**Status: live** at https://krishnapowereng.in, hosted on Cloudflare, since 7 October 2026.
+Still to do: connect the enquiry email, and the dashboard settings in
+[Launch steps](#launch-steps). An older preview is still on GitHub Pages at
+https://siddharth-y26.github.io/KPE-Industries/ and is to be switched off.
+
+The photos for power plants, steel industries, telecom and cable termination come from
+the company profile. Three of them were very small and have been enlarged with an AI
+upscaler (Real-ESRGAN), so sharper originals are still wanted.
 
 ## How it is put together
 
