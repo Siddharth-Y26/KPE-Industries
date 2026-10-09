@@ -26,11 +26,10 @@ const [, owner, repo] = match;
 const basePath = `/${repo}`;
 const siteUrl = `https://${owner.toLowerCase()}.github.io/${repo}`;
 
-// PLACEHOLDER: the phone number from the company profile, so the preview shows the
-// WhatsApp buttons. It has not been confirmed as the WhatsApp Business number. The real
-// site never falls back to it: it uses NEXT_PUBLIC_WHATSAPP_NUMBER from .env.production
-// and hides the buttons while that is blank.
-const PREVIEW_WHATSAPP_NUMBER = "918808055589";
+// The enquiries number, so the preview shows the WhatsApp buttons. The real site never
+// falls back to it: it uses NEXT_PUBLIC_WHATSAPP_NUMBER from .env.production and hides
+// the buttons while that is blank.
+const PREVIEW_WHATSAPP_NUMBER = "918874900222";
 
 console.log(`Building preview for ${siteUrl}/`);
 execSync("npm run build", {

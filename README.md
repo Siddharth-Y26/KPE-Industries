@@ -106,9 +106,9 @@ before the domain exists, and it differs from the real site in four ways:
 
 - **The enquiry form does not send.** GitHub Pages serves files only, so the enquiry
   endpoint does not run. The form says so and points to phone and email.
-- **The WhatsApp number is a placeholder.** The preview uses the phone number from the
-  company profile so that the WhatsApp buttons can be seen. The real site shows them
-  only once the confirmed number is set in `.env.production`.
+- **The WhatsApp number is built in.** The preview always uses the enquiries number. The
+  real site takes its number from `.env.production` and hides the WhatsApp buttons while
+  that is blank.
 - **No security headers.** GitHub Pages cannot set the Content-Security-Policy and the
   other headers that Cloudflare will send.
 - **Not indexed.** The preview asks search engines to stay away, so it does not compete
