@@ -58,6 +58,26 @@
     ],
     "version": "5bd6ff32"
   },
+  "hero/generator-sets": {
+    "width": 963,
+    "height": 1280,
+    "widths": [
+      480,
+      800,
+      963
+    ],
+    "version": "8a8e0f91"
+  },
+  "hero/plinth-transformer": {
+    "width": 963,
+    "height": 1280,
+    "widths": [
+      480,
+      800,
+      963
+    ],
+    "version": "ee8954d6"
+  },
   "hero/pole-mounted-transformer": {
     "width": 960,
     "height": 1152,

@@ -56,10 +56,9 @@ export function About({ full = false }: { full?: boolean }) {
         </div>
 
         <ul data-reveal className="mt-20 grid gap-px bg-steel-100 sm:grid-cols-3 lg:mt-28">
-          {about.principles.map((principle, index) => (
+          {about.principles.map((principle) => (
             <li key={principle.title} className="bg-white py-8 sm:px-8 sm:first:pl-0">
-              <p className="font-display text-sm font-semibold text-gold-700">0{index + 1}</p>
-              <h3 className="mt-4 text-2xl font-semibold text-navy-900">{principle.title}</h3>
+              <h3 className="text-2xl font-semibold text-navy-900">{principle.title}</h3>
               <p className="mt-3 leading-relaxed text-steel-500">{principle.text}</p>
             </li>
           ))}

@@ -39,10 +39,7 @@ export function MissionVision() {
             const Icon = icons[value.icon];
             return (
               <li key={value.title} data-reveal style={revealDelay(index)} className="py-7 sm:pr-8 lg:px-8 lg:py-2 lg:first:pl-0">
-                <div className="flex items-center justify-between">
-                  <Icon className="h-8 w-8 text-gold-500" strokeWidth={1.5} aria-hidden="true" />
-                  <span className="font-display text-sm font-semibold text-steel-300">0{index + 1}</span>
-                </div>
+                <Icon className="h-8 w-8 text-gold-500" strokeWidth={1.5} aria-hidden="true" />
                 <h3 className="mt-7 text-xl font-semibold">{value.title}</h3>
                 <p className="mt-2.5 leading-relaxed text-steel-200">{value.text}</p>
               </li>

@@ -58,8 +58,7 @@ export default function ServicesPage() {
             </div>
 
             <div data-reveal className={`lg:col-span-6 ${index % 2 === 1 ? "lg:order-1" : "lg:col-start-7"}`}>
-              <p className="font-display text-sm font-semibold text-gold-700">0{index + 1}</p>
-              <h2 className="mt-4 text-3xl font-semibold tracking-tight text-navy-900 sm:text-4xl lg:text-5xl">
+              <h2 className="text-3xl font-semibold tracking-tight text-navy-900 sm:text-4xl lg:text-5xl">
                 {service.name}
               </h2>
               <p className="mt-5 text-lg leading-relaxed text-steel-500">{service.summary}</p>

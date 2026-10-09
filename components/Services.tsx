@@ -26,8 +26,7 @@ export function Services() {
                   className="aspect-[5/2]"
                 />
                 <div className="flex flex-1 flex-col p-7 lg:p-9">
-                  <p className="font-display text-sm font-semibold text-gold-700">0{index + 1}</p>
-                  <h3 className="mt-3 text-2xl font-semibold tracking-tight text-navy-900 lg:text-[1.75rem]">
+                  <h3 className="text-2xl font-semibold tracking-tight text-navy-900 lg:text-[1.75rem]">
                     <Link href={`/services#${service.slug}`} className="after:absolute after:inset-0">
                       {service.name}
                     </Link>

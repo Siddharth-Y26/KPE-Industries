@@ -36,22 +36,28 @@ export const about = {
 // `position` is the part of the photo kept in view when the frame crops it.
 export const heroSlides = [
   {
-    image: "hero/double-pole-structure",
-    alt: "Double-pole structure with insulators and a ladder, against a clear sky",
-    caption: "Double-pole structure erection",
-    position: "50% 0%",
-  },
-  {
     image: "hero/pole-mounted-transformer",
     alt: "Transformer mounted on a double-pole structure beside a building, with a metering unit",
     caption: "Pole-mounted transformer installation",
     position: "50% 80%",
   },
   {
+    image: "hero/plinth-transformer",
+    alt: "Transformer on a concrete plinth at night, with its conservator tank and radiators",
+    caption: "Plinth-mounted transformer",
+    position: "50% 58%",
+  },
+  {
     image: "hero/transformer-terminals",
     alt: "Close view of the low-voltage bushings and terminal studs on a transformer",
     caption: "Transformer low-voltage terminals",
     position: "60% 50%",
+  },
+  {
+    image: "hero/generator-sets",
+    alt: "Two diesel generator sets in acoustic enclosures on concrete plinths, at night",
+    caption: "Diesel generator set installation",
+    position: "50% 35%",
   },
   {
     image: "hero/transformer-metering",
@@ -64,6 +70,12 @@ export const heroSlides = [
     alt: "Transformer installed inside a steel mesh enclosure",
     caption: "Transformer in a protective enclosure",
     position: "50% 55%",
+  },
+  {
+    image: "hero/double-pole-structure",
+    alt: "Double-pole structure with insulators and a ladder, against a clear sky",
+    caption: "Double-pole structure erection",
+    position: "50% 0%",
   },
 ] as const;
 
