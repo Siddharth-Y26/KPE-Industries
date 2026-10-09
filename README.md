@@ -53,7 +53,8 @@ the `out/` folder.
 
 | To change | Edit |
 |---|---|
-| Phone, email, address, maps link, social links | `config/site.ts` |
+| Phone numbers, email, both addresses, maps link, social links | `config/site.ts` |
+| The inbox that receives enquiries | `EMAIL_TO` in `wrangler.jsonc` |
 | About text, mission, vision, values, registrations | `data/company.ts` |
 | Services | `data/services.ts` |
 | Projects, work in hand, portfolio numbers | `data/projects.ts` |
@@ -134,8 +135,7 @@ registrar only: the site is not hosted there, so no Hostinger web hosting plan i
 3. **Email.** Create a Resend account and verify the domain (this adds SPF and DKIM
    records). `EMAIL_FROM` in `wrangler.jsonc` is an address on the domain,
    `KPE Website <enquiries@krishnapowereng.in>`. Enquiries are delivered to `EMAIL_TO`
-   with the enquirer as reply-to. The existing Yahoo inbox keeps working; no MX records
-   change.
+   (the business's Gmail inbox) with the enquirer as reply-to. No MX records change.
 4. **Turnstile.** Create a Turnstile widget for the domain. Put the site key in
    `.env.production` and the secret key in `wrangler secret put`.
 5. **Settings.** Create `.env.production` from `.env.example` with the site URL

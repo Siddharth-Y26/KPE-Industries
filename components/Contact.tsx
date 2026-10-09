@@ -1,5 +1,5 @@
-import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
-import { enquiryHref, siteConfig } from "@/config/site";
+import { ArrowUpRight, Building2, Mail, MapPin, Phone } from "lucide-react";
+import { cityLine, enquiryHref, siteConfig } from "@/config/site";
 import { whatsappUrl } from "@/lib/whatsapp";
 import { EnquiryForm } from "./EnquiryForm";
 import { ButtonLink } from "./ui/Button";
@@ -43,30 +43,32 @@ export function Enquiry() {
   );
 }
 
-// Address, phone and email. No embedded map: a link costs nothing and loads nothing.
+// Both addresses, both phone numbers and the email. No embedded map: a link costs
+// nothing and loads nothing.
 export function Contact() {
   const whatsapp = whatsappUrl();
   const { contact } = siteConfig;
+  const [emailName, emailDomain] = contact.email.split("@");
 
   return (
     <section id="contact" className="py-20 lg:py-28">
       <Container>
         <SectionHeading eyebrow="Contact" title="Contact our team" />
 
-        <div data-reveal className="mt-12 grid gap-px border border-steel-100 bg-steel-100 md:grid-cols-3">
+        <div data-reveal className="mt-12 grid gap-px border border-steel-100 bg-steel-100 md:grid-cols-2">
           <div className="bg-white p-7 lg:p-9">
             <MapPin className="h-7 w-7 text-navy-700" strokeWidth={1.5} aria-hidden="true" />
             <h3 className="mt-6 font-display text-xs font-semibold uppercase tracking-[0.2em] text-steel-500">
-              Registered office
+              Current office
             </h3>
             <address className="mt-3 text-lg not-italic leading-relaxed text-navy-900">
               {siteConfig.name}
               <br />
-              {contact.address.line1}
+              {contact.office.line1}
               <br />
-              {contact.address.line2}
+              {contact.office.line2}
               <br />
-              {contact.address.city}, {contact.address.state} {contact.address.postalCode}
+              {cityLine(contact.office)}
             </address>
             <a
               href={contact.mapsUrl}
@@ -80,14 +82,48 @@ export function Contact() {
           </div>
 
           <div className="bg-white p-7 lg:p-9">
+            <Building2 className="h-7 w-7 text-navy-700" strokeWidth={1.5} aria-hidden="true" />
+            <h3 className="mt-6 font-display text-xs font-semibold uppercase tracking-[0.2em] text-steel-500">
+              Registered office
+            </h3>
+            <address className="mt-3 text-lg not-italic leading-relaxed text-navy-900">
+              {siteConfig.name}
+              <br />
+              {contact.registeredOffice.line1}
+              <br />
+              {contact.registeredOffice.line2}
+              <br />
+              {cityLine(contact.registeredOffice)}
+            </address>
+          </div>
+
+          <div className="bg-white p-7 lg:p-9">
             <Phone className="h-7 w-7 text-navy-700" strokeWidth={1.5} aria-hidden="true" />
             <h3 className="mt-6 font-display text-xs font-semibold uppercase tracking-[0.2em] text-steel-500">Phone</h3>
-            <a
-              href={contact.phoneHref}
-              className="mt-3 block font-display text-2xl font-semibold text-navy-900 hover:text-navy-700"
-            >
-              {contact.phoneDisplay}
-            </a>
+            <dl className="mt-3 grid gap-4 sm:grid-cols-2">
+              <div>
+                <dt className="text-sm text-steel-500">Enquiries</dt>
+                <dd>
+                  <a
+                    href={contact.phoneHref}
+                    className="font-display text-2xl font-semibold text-navy-900 hover:text-navy-700"
+                  >
+                    {contact.phoneDisplay}
+                  </a>
+                </dd>
+              </div>
+              <div>
+                <dt className="text-sm text-steel-500">Emergency</dt>
+                <dd>
+                  <a
+                    href={contact.emergencyPhoneHref}
+                    className="font-display text-2xl font-semibold text-navy-900 hover:text-navy-700"
+                  >
+                    {contact.emergencyPhoneDisplay}
+                  </a>
+                </dd>
+              </div>
+            </dl>
             {whatsapp ? (
               <a
                 href={whatsapp}
@@ -106,9 +142,11 @@ export function Contact() {
             <h3 className="mt-6 font-display text-xs font-semibold uppercase tracking-[0.2em] text-steel-500">Email</h3>
             <a
               href={`mailto:${contact.email}`}
-              className="mt-3 block break-all font-display text-xl font-semibold text-navy-900 hover:text-navy-700 lg:text-2xl"
+              className="mt-3 block break-words font-display text-lg font-semibold text-navy-900 hover:text-navy-700 sm:text-xl lg:text-2xl"
             >
-              {contact.email}
+              {/* On a narrow phone the address may wrap, and then it wraps before the @. */}
+              {emailName}
+              <wbr />@{emailDomain}
             </a>
             <ButtonLink href={enquiryHref} className="mt-6">
               Enquire Now

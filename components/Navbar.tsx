@@ -144,7 +144,11 @@ export function Navbar() {
             <div className="mt-8 grid gap-3 text-[0.95rem] text-steel-500">
               <a href={contact.phoneHref} className="flex min-h-11 items-center gap-3">
                 <Phone className="h-4 w-4 text-navy-700" aria-hidden="true" />
-                {contact.phoneDisplay}
+                Enquiries: {contact.phoneDisplay}
+              </a>
+              <a href={contact.emergencyPhoneHref} className="flex min-h-11 items-center gap-3">
+                <Phone className="h-4 w-4 text-navy-700" aria-hidden="true" />
+                Emergency: {contact.emergencyPhoneDisplay}
               </a>
               <a href={`mailto:${contact.email}`} className="flex min-h-11 items-center gap-3 break-all">
                 <Mail className="h-4 w-4 shrink-0 text-navy-700" aria-hidden="true" />

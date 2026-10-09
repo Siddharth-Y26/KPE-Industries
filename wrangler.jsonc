@@ -38,7 +38,7 @@
     // Must be an address on a domain verified with the email provider.
     "EMAIL_FROM": "KPE Website <enquiries@krishnapowereng.in>",
     // The business inbox that receives enquiries.
-    "EMAIL_TO": "krishnapower07@yahoo.in",
+    "EMAIL_TO": "info.krishnapowereng@gmail.com",
     // Extra origins allowed to post the form, comma separated. The site's own origin
     // is always allowed.
     "ALLOWED_ORIGINS": ""

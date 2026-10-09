@@ -1,6 +1,6 @@
 import { PageHeader } from "@/components/PageHeader";
 import { Prose } from "@/components/ui/Prose";
-import { siteConfig } from "@/config/site";
+import { cityLine, siteConfig } from "@/config/site";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
@@ -22,8 +22,8 @@ export default function PrivacyPage() {
       <Prose>
         <h2>Who we are</h2>
         <p>
-          This website is operated by {siteConfig.name}, {contact.address.line1}, {contact.address.line2},{" "}
-          {contact.address.city}, {contact.address.state} {contact.address.postalCode}.
+          This website is operated by {siteConfig.name}, {contact.registeredOffice.line1},{" "}
+          {contact.registeredOffice.line2}, {cityLine(contact.registeredOffice)}.
         </p>
 
         <h2>Information you give us</h2>

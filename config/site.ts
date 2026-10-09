@@ -1,7 +1,27 @@
 // Every value that may change without a redesign lives here or in an environment
 // variable. Company facts (services, projects, credentials) live in data/.
 
-const address = {
+export type Address = {
+  line1: string;
+  line2: string;
+  city: string;
+  state: string;
+  // Left out when the client has not supplied it.
+  postalCode?: string;
+  country: string;
+};
+
+// Where the team works and visitors come. The client gave no PIN code for it.
+const office: Address = {
+  line1: "CP-71/TF-4 (3rd Floor), Galaxy Tower",
+  line2: "Viraj Khand, Gomti Nagar",
+  city: "Lucknow",
+  state: "Uttar Pradesh",
+  country: "IN",
+};
+
+// The company's registered address, shown beside the office and used in the privacy notice.
+const registeredOffice: Address = {
   line1: "D3/125 Vibhav Khand",
   line2: "Gomti Nagar",
   city: "Lucknow",
@@ -10,7 +30,12 @@ const address = {
   country: "IN",
 };
 
-const mapsQuery = [address.line1, address.line2, address.city, address.state, address.postalCode].join(", ");
+// "Lucknow, Uttar Pradesh 226010", or without the PIN code when there is none.
+export function cityLine(address: Address) {
+  return [`${address.city}, ${address.state}`, address.postalCode].filter(Boolean).join(" ");
+}
+
+const mapsQuery = [office.line1, office.line2, cityLine(office)].join(", ");
 
 export const siteConfig = {
   name: "Krishna Power & Engineers",
@@ -32,10 +57,16 @@ export const siteConfig = {
   staticPreview: process.env.NEXT_PUBLIC_STATIC_PREVIEW === "true",
 
   contact: {
-    phoneDisplay: "+91 88080 55589",
-    phoneHref: "tel:+918808055589",
-    email: "krishnapower07@yahoo.in",
-    address,
+    // Enquiries: the number behind every "Call" button.
+    phoneDisplay: "+91 88749 00222",
+    phoneHref: "tel:+918874900222",
+    // For emergencies. Listed beside the enquiry number wherever contact details are shown.
+    emergencyPhoneDisplay: "+91 88080 55589",
+    emergencyPhoneHref: "tel:+918808055589",
+    email: "info.krishnapowereng@gmail.com",
+    office,
+    registeredOffice,
+    // Opens the office, not the registered address.
     mapsUrl:
       process.env.NEXT_PUBLIC_MAPS_URL ||
       `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapsQuery)}`,

@@ -1,6 +1,6 @@
-import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
+import { ArrowRight, Building2, Mail, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
-import { enquiryHref, navigation, siteConfig } from "@/config/site";
+import { cityLine, enquiryHref, navigation, siteConfig } from "@/config/site";
 import { Logo } from "./Logo";
 import { ButtonLink } from "./ui/Button";
 import { Container } from "./ui/Container";
@@ -50,7 +50,13 @@ export function Footer() {
             <li>
               <a href={contact.phoneHref} className="flex items-start gap-3 hover:text-white">
                 <Phone className="mt-1 h-4 w-4 shrink-0 text-gold-500" aria-hidden="true" />
-                {contact.phoneDisplay}
+                Enquiries: {contact.phoneDisplay}
+              </a>
+            </li>
+            <li>
+              <a href={contact.emergencyPhoneHref} className="flex items-start gap-3 hover:text-white">
+                <Phone className="mt-1 h-4 w-4 shrink-0 text-gold-500" aria-hidden="true" />
+                Emergency: {contact.emergencyPhoneDisplay}
               </a>
             </li>
             <li>
@@ -62,9 +68,21 @@ export function Footer() {
             <li className="flex items-start gap-3">
               <MapPin className="mt-1 h-4 w-4 shrink-0 text-gold-500" aria-hidden="true" />
               <address className="not-italic leading-relaxed">
-                {contact.address.line1}, {contact.address.line2}
+                <span className="block text-white">Current office</span>
+                {contact.office.line1}
                 <br />
-                {contact.address.city}, {contact.address.state} {contact.address.postalCode}
+                {contact.office.line2}
+                <br />
+                {cityLine(contact.office)}
+              </address>
+            </li>
+            <li className="flex items-start gap-3">
+              <Building2 className="mt-1 h-4 w-4 shrink-0 text-gold-500" aria-hidden="true" />
+              <address className="not-italic leading-relaxed">
+                <span className="block text-white">Registered office</span>
+                {contact.registeredOffice.line1}, {contact.registeredOffice.line2}
+                <br />
+                {cityLine(contact.registeredOffice)}
               </address>
             </li>
           </ul>

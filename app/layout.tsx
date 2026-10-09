@@ -37,13 +37,14 @@ const organization = {
   description: siteConfig.tagline,
   email: siteConfig.contact.email,
   telephone: siteConfig.contact.phoneHref.replace("tel:", ""),
+  // The office, which is where the business is found. A missing PIN code is simply left out.
   address: {
     "@type": "PostalAddress",
-    streetAddress: `${siteConfig.contact.address.line1}, ${siteConfig.contact.address.line2}`,
-    addressLocality: siteConfig.contact.address.city,
-    addressRegion: siteConfig.contact.address.state,
-    postalCode: siteConfig.contact.address.postalCode,
-    addressCountry: siteConfig.contact.address.country,
+    streetAddress: `${siteConfig.contact.office.line1}, ${siteConfig.contact.office.line2}`,
+    addressLocality: siteConfig.contact.office.city,
+    addressRegion: siteConfig.contact.office.state,
+    postalCode: siteConfig.contact.office.postalCode,
+    addressCountry: siteConfig.contact.office.country,
   },
 };
 
