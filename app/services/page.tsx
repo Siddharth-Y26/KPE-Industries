@@ -17,7 +17,7 @@ export const metadata = pageMetadata({
 export default function ServicesPage() {
   return (
     <>
-      <PageHeader label="Services" title="Our core services">
+      <PageHeader label="Services" title="Our Core Services">
         <p>Power plants, steel industries, power distribution and telecom.</p>
       </PageHeader>
 

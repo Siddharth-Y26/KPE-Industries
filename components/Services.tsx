@@ -11,7 +11,7 @@ export function Services() {
   return (
     <section className="bg-mist py-20 lg:py-32">
       <Container>
-        <SectionHeading eyebrow="What we do" title="Our core services">
+        <SectionHeading eyebrow="What we do" title="Our Core Services">
           <p>Four areas of work, delivered by experienced and skilled engineers.</p>
         </SectionHeading>
 

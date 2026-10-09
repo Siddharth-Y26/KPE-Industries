@@ -2,7 +2,7 @@
 // profile does not support.
 
 export const about = {
-  heading: "Engineering expertise. Built around execution.",
+  heading: "Engineering Expertise. Built Around Execution.",
   summary:
     "Krishna Power & Engineers is an engineering company providing comprehensive solutions for the power, cement and steel industries, backed by experienced and skilled engineers.",
   whatWeDo:
@@ -112,22 +112,22 @@ export const processSteps = [
 
 export const reasons = [
   {
-    title: "Experienced team",
+    title: "Experienced Team",
     text: "Skilled engineers across power, steel and telecom.",
     icon: "team",
   },
   {
-    title: "On-time delivery",
+    title: "On-Time Delivery",
     text: "Projects completed within the scheduled time frame.",
     icon: "time",
   },
   {
-    title: "Quality workmanship",
+    title: "Quality Workmanship",
     text: "Adequate instruments and tools for quality work.",
     icon: "quality",
   },
   {
-    title: "Fair pricing",
+    title: "Fair Pricing",
     text: "Best quality at a reasonable price.",
     icon: "price",
   },

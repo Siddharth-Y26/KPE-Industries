@@ -17,7 +17,7 @@ export function Capabilities() {
   return (
     <section className="py-20 lg:py-32">
       <Container>
-        <SectionHeading eyebrow="Capabilities" title="Electrical & instrumentation expertise">
+        <SectionHeading eyebrow="Capabilities" title="Electrical & Instrumentation Expertise">
           <p>Erection, testing and commissioning of electrical and instrumentation systems, with support for operation and maintenance.</p>
         </SectionHeading>
 

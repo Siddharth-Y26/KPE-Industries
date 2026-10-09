@@ -14,7 +14,7 @@ export function WhyChoose() {
   return (
     <section className="py-20 lg:py-32">
       <Container className="grid gap-12 lg:grid-cols-12 lg:gap-10">
-        <SectionHeading eyebrow="Why KPE" title="Why clients choose KPE" className="lg:col-span-4" />
+        <SectionHeading eyebrow="Why KPE" title="Why Clients Choose KPE" className="lg:col-span-4" />
 
         <ul data-reveal className="grid gap-px border border-steel-100 bg-steel-100 sm:grid-cols-2 lg:col-span-8">
           {reasons.map((reason) => {

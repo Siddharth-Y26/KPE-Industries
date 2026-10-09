@@ -16,7 +16,7 @@ export function Clients() {
             <span className="text-8xl text-gold-500 lg:text-9xl">
               <CountUp value={portfolio.total} />
             </span>
-            <span className="max-w-[9rem] text-xl leading-tight lg:text-2xl">clients and projects on record</span>
+            <span className="max-w-[9rem] text-xl leading-tight lg:text-2xl">Clients and Projects on Record</span>
           </h2>
           <p className="mt-8 max-w-md leading-relaxed text-steel-200">{portfolio.note}</p>
         </div>

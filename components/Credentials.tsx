@@ -11,7 +11,7 @@ export function Credentials() {
   return (
     <section id="credentials" className="py-20 lg:py-32">
       <Container className="grid gap-12 lg:grid-cols-12 lg:gap-10">
-        <SectionHeading eyebrow="Compliance" title="Registrations & credentials" className="lg:col-span-4">
+        <SectionHeading eyebrow="Compliance" title="Registrations & Credentials" className="lg:col-span-4">
           <p>Statutory registrations held by the firm. Further details are available on request.</p>
         </SectionHeading>
 

@@ -13,7 +13,7 @@ export const metadata = pageMetadata({
 export default function ProjectsPage() {
   return (
     <>
-      <PageHeader label="Projects" title="Projects and work in hand">
+      <PageHeader label="Projects" title="Projects and Work in Hand">
         <p>Industrial project highlights, work currently in hand, and our portfolio in numbers.</p>
       </PageHeader>
       <Projects full />

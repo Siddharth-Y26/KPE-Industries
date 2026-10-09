@@ -33,7 +33,7 @@ export function Projects({ full = false }: { full?: boolean }) {
     <section className="bg-mist py-20 lg:py-32">
       <Container>
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-          <SectionHeading eyebrow="Projects" title="Industrial project highlights">
+          <SectionHeading eyebrow="Projects" title="Industrial Project Highlights">
             <p>Selected industrial electrical projects from our record.</p>
           </SectionHeading>
           {full ? null : (
@@ -99,7 +99,7 @@ export function WorkInHand() {
   return (
     <section id="work-in-hand" className="py-20 lg:py-32">
       <Container>
-        <SectionHeading eyebrow="Work in hand" title="Projects under execution">
+        <SectionHeading eyebrow="Work in hand" title="Projects Under Execution">
           <p>Work currently being carried out by our teams.</p>
         </SectionHeading>
 

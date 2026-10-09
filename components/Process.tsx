@@ -10,7 +10,7 @@ export function Process() {
     <section className="relative isolate overflow-hidden bg-navy-950 py-20 text-white lg:py-32">
       <div aria-hidden="true" className="blueprint absolute inset-0 -z-10" />
       <Container>
-        <SectionHeading eyebrow="How we deliver" title="From concept to commissioning" tone="dark">
+        <SectionHeading eyebrow="How we deliver" title="From Concept to Commissioning" tone="dark">
           <p>Our professionals handle project execution from concept to commissioning, and operation and maintenance.</p>
         </SectionHeading>
 

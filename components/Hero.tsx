@@ -43,7 +43,7 @@ export function Hero() {
           className="hero-rise mt-6 text-[2.5rem] font-semibold leading-[1.03] tracking-tight sm:text-6xl xl:text-[4.4rem]"
           style={rise(80)}
         >
-          Powering industrial infrastructure <span className="text-gold-500">with precision.</span>
+          Powering Industrial Infrastructure <span className="text-gold-500">With Precision.</span>
         </h1>
 
         <p className="hero-rise mt-6 max-w-xl text-lg leading-relaxed text-steel-200 sm:text-xl" style={rise(160)}>

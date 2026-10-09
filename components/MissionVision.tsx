@@ -17,7 +17,7 @@ export function MissionVision() {
       <Container>
         <div data-reveal>
           <Eyebrow tone="dark">Mission, vision &amp; values</Eyebrow>
-          <h2 className="sr-only">Mission, vision and values</h2>
+          <h2 className="sr-only">Mission, Vision and Values</h2>
         </div>
 
         <div className="mt-10 grid border-y border-navy-700 lg:grid-cols-2 lg:divide-x lg:divide-navy-700">

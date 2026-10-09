@@ -17,7 +17,7 @@ export function Enquiry() {
     <section id="enquiry" className="bg-mist py-20 lg:py-32">
       <Container className="grid gap-12 lg:grid-cols-12 lg:gap-10">
         <div className="lg:col-span-4">
-          <SectionHeading eyebrow="Enquire now" title="Have a project in mind? Let's talk.">
+          <SectionHeading eyebrow="Enquire now" title="Have a Project in Mind? Let's Talk.">
             <p>Tell us about your requirement and our team will get in touch with you.</p>
           </SectionHeading>
 
@@ -46,14 +46,13 @@ export function Enquiry() {
 // Both addresses, both phone numbers and the email. No embedded map: a link costs
 // nothing and loads nothing.
 export function Contact() {
-  const whatsapp = whatsappUrl();
   const { contact } = siteConfig;
   const [emailName, emailDomain] = contact.email.split("@");
 
   return (
     <section id="contact" className="py-20 lg:py-28">
       <Container>
-        <SectionHeading eyebrow="Contact" title="Contact our team" />
+        <SectionHeading eyebrow="Contact" title="Contact Our Team" />
 
         <div data-reveal className="mt-12 grid gap-px border border-steel-100 bg-steel-100 md:grid-cols-2">
           <div className="bg-white p-7 lg:p-9">
@@ -124,17 +123,6 @@ export function Contact() {
                 </dd>
               </div>
             </dl>
-            {whatsapp ? (
-              <a
-                href={whatsapp}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-5 inline-flex min-h-11 items-center gap-2 font-display text-sm font-semibold text-navy-700 underline underline-offset-4 hover:text-navy-900"
-              >
-                <WhatsAppIcon className="h-4 w-4 text-whatsapp" />
-                Chat on WhatsApp
-              </a>
-            ) : null}
           </div>
 
           <div className="bg-white p-7 lg:p-9">

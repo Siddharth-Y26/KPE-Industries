@@ -13,11 +13,11 @@ export const metadata = pageMetadata({
 export default function DisclaimerPage() {
   return (
     <>
-      <PageHeader label="Website Disclaimer" title="Website disclaimer">
+      <PageHeader label="Website Disclaimer" title="Website Disclaimer">
         <p>The terms on which the information on this website is provided.</p>
       </PageHeader>
       <Prose>
-        <h2>General information</h2>
+        <h2>General Information</h2>
         <p>
           The content of this website is provided by {siteConfig.name} for general information about the company and
           its services. It is not an offer, a quotation or a contract. The scope, price and schedule of any work are
@@ -31,13 +31,13 @@ export default function DisclaimerPage() {
           please tell us at <a href={`mailto:${siteConfig.contact.email}`}>{siteConfig.contact.email}</a>.
         </p>
 
-        <h2>Names and trademarks</h2>
+        <h2>Names and Trademarks</h2>
         <p>
           Company names mentioned on this website belong to their respective owners. They are named only to describe
           work carried out, and their mention does not imply endorsement.
         </p>
 
-        <h2>External links</h2>
+        <h2>External Links</h2>
         <p>
           This website links to external services such as Google Maps and WhatsApp. We are not responsible for the
           content or the privacy practices of those services.

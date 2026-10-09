@@ -49,7 +49,7 @@ export function CtaBand() {
       <Container className="flex flex-col gap-9 py-16 lg:flex-row lg:items-center lg:justify-between lg:py-20">
         <div data-reveal className="max-w-2xl">
           <h2 className="text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
-            Have a project in mind? Let&rsquo;s talk.
+            Have a Project in Mind? Let&rsquo;s Talk.
           </h2>
           <p className="mt-4 text-lg text-navy-900">
             Tell us about your requirement and our team will get in touch with you.

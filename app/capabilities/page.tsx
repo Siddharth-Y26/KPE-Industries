@@ -14,7 +14,7 @@ export const metadata = pageMetadata({
 export default function CapabilitiesPage() {
   return (
     <>
-      <PageHeader label="Capabilities" title="Electrical & instrumentation capabilities">
+      <PageHeader label="Capabilities" title="Electrical & Instrumentation Capabilities">
         <p>Erection, testing and commissioning, from concept through to operation and maintenance support.</p>
       </PageHeader>
       <Capabilities />

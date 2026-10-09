@@ -16,17 +16,17 @@ export default function PrivacyPage() {
 
   return (
     <>
-      <PageHeader label="Privacy Policy" title="Privacy policy">
+      <PageHeader label="Privacy Policy" title="Privacy Policy">
         <p>How this website handles the information you send through it.</p>
       </PageHeader>
       <Prose>
-        <h2>Who we are</h2>
+        <h2>Who We Are</h2>
         <p>
           This website is operated by {siteConfig.name}, {contact.registeredOffice.line1},{" "}
           {contact.registeredOffice.line2}, {cityLine(contact.registeredOffice)}.
         </p>
 
-        <h2>Information you give us</h2>
+        <h2>Information You Give Us</h2>
         <p>When you send an enquiry through the form on this website, we receive the details you enter:</p>
         <ul>
           <li>your name and company name</li>
@@ -35,19 +35,19 @@ export default function PrivacyPage() {
           <li>the project location, estimated capacity and preferred contact method, if you choose to give them</li>
         </ul>
 
-        <h2>How we use it</h2>
+        <h2>How We Use It</h2>
         <p>
           We use these details only to respond to your enquiry and to discuss the work you have asked about. We do
           not sell your information, and we do not use it for advertising.
         </p>
 
-        <h2>How it reaches us</h2>
+        <h2>How It Reaches Us</h2>
         <p>
           Your enquiry is delivered to our business email inbox through an email delivery service. This website does
           not keep a copy of your enquiry in a database.
         </p>
 
-        <h2>Security and abuse prevention</h2>
+        <h2>Security and Abuse Prevention</h2>
         <p>
           This website is served through a content delivery and security network. To protect the website and the
           enquiry form from automated abuse, that service processes technical information about each request, such
@@ -60,13 +60,13 @@ export default function PrivacyPage() {
           necessary to protect the website.
         </p>
 
-        <h2>WhatsApp, phone and email</h2>
+        <h2>WhatsApp, Phone and Email</h2>
         <p>
           If you contact us by WhatsApp, phone or email instead of the form, your message is handled by that service
           under its own terms and privacy policy.
         </p>
 
-        <h2>Your choices</h2>
+        <h2>Your Choices</h2>
         <p>
           To ask what information we hold about your enquiry, or to ask us to correct or delete it, write to us at{" "}
           <a href={`mailto:${contact.email}`}>{contact.email}</a>.

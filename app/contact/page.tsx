@@ -12,7 +12,7 @@ export const metadata = pageMetadata({
 export default function ContactPage() {
   return (
     <>
-      <PageHeader label="Contact" title="Contact us">
+      <PageHeader label="Contact" title="Contact Us">
         <p>Send an enquiry, call us, or write to us. We will get in touch with you.</p>
       </PageHeader>
       <Enquiry />
