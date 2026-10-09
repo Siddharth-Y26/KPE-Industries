@@ -108,9 +108,6 @@ export function WorkInHand() {
           <table className="w-full border-collapse text-left">
             <thead>
               <tr className="border-b-2 border-navy-900 font-display text-xs font-semibold uppercase tracking-[0.18em] text-steel-500">
-                <th scope="col" className="w-16 py-4 pr-4">
-                  No.
-                </th>
                 <th scope="col" className="py-4 pr-6">
                   Work
                 </th>
@@ -123,9 +120,8 @@ export function WorkInHand() {
               </tr>
             </thead>
             <tbody>
-              {workInHand.map((item, index) => (
+              {workInHand.map((item) => (
                 <tr key={item.work} className="border-b border-steel-100 align-top">
-                  <td className="py-6 pr-4 font-display text-sm font-semibold text-gold-700">0{index + 1}</td>
                   <th scope="row" className="py-6 pr-6 font-display text-lg font-semibold text-navy-900">
                     {item.work}
                   </th>
@@ -138,10 +134,9 @@ export function WorkInHand() {
         </div>
 
         <ul className="mt-10 grid gap-4 md:hidden">
-          {workInHand.map((item, index) => (
+          {workInHand.map((item) => (
             <li key={item.work} data-reveal className="border border-steel-100 p-6">
-              <p className="font-display text-sm font-semibold text-gold-700">0{index + 1}</p>
-              <h3 className="mt-3 text-lg font-semibold leading-snug text-navy-900">{item.work}</h3>
+              <h3 className="text-lg font-semibold leading-snug text-navy-900">{item.work}</h3>
               <p className="mt-3 text-steel-500">{item.client}</p>
               <p className="mt-2 flex items-center gap-2 text-sm text-steel-500">
                 <MapPin className="h-4 w-4 shrink-0" aria-hidden="true" />

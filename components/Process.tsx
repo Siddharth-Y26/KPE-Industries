@@ -22,18 +22,19 @@ export function Process() {
                 key={step.title}
                 data-reveal
                 style={revealDelay(index, 140)}
-                className="group relative pb-11 pl-[4.5rem] last:pb-0 lg:pb-0 lg:pl-0 lg:pr-8"
+                className="group relative pb-11 pl-8 last:pb-0 lg:pb-0 lg:pl-0 lg:pr-8"
               >
                 {last ? null : (
                   <span
                     aria-hidden="true"
-                    className="absolute bottom-0 left-[1.4rem] top-12 w-px bg-navy-700 lg:bottom-auto lg:left-12 lg:right-0 lg:top-[1.4rem] lg:h-px lg:w-auto"
+                    className="absolute -bottom-[0.4375rem] left-[calc(0.4375rem-0.5px)] top-[1.3125rem] w-px bg-navy-700 lg:bottom-auto lg:left-3.5 lg:right-0 lg:top-[calc(0.4375rem-0.5px)] lg:h-px lg:w-auto"
                   />
                 )}
-                <span className="absolute left-0 top-0 flex h-[2.85rem] w-[2.85rem] items-center justify-center border border-gold-500 font-display text-sm font-semibold text-gold-500 transition-colors duration-300 group-hover:bg-gold-500 group-hover:text-navy-950 lg:static">
-                  0{index + 1}
-                </span>
-                <h3 className="pt-1.5 text-xl font-semibold lg:mt-8 lg:pt-0 lg:text-2xl">{step.title}</h3>
+                <span
+                  aria-hidden="true"
+                  className="absolute left-0 top-[0.4375rem] block h-3.5 w-3.5 border border-gold-500 transition-colors duration-300 group-hover:bg-gold-500 lg:static"
+                />
+                <h3 className="text-xl font-semibold lg:mt-7 lg:text-2xl">{step.title}</h3>
                 <p className="mt-2.5 leading-relaxed text-steel-200">{step.text}</p>
               </li>
             );

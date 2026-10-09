@@ -25,8 +25,6 @@ const SWIPE_DISTANCE = 48;
 const controlButton =
   "flex h-11 w-11 items-center lg:h-10 lg:w-10 justify-center rounded-sm border border-white/30 bg-navy-950/40 text-white transition-colors hover:border-white hover:bg-white hover:text-navy-950";
 
-const twoDigits = (value: number) => String(value).padStart(2, "0");
-
 function subscribeToLoad(onChange: () => void) {
   window.addEventListener("load", onChange);
   return () => window.removeEventListener("load", onChange);
@@ -127,43 +125,33 @@ export function HeroSlideshow({ slides, children }: { slides: HeroSlide[]; child
           onKeyDown={onKeyDown}
           className="hero-controls order-first lg:order-none lg:col-span-4 lg:col-start-9 lg:self-end lg:border lg:border-white/15 lg:bg-navy-950/75 lg:px-6 lg:pb-3 lg:pt-5 lg:backdrop-blur-md"
         >
-          <div className="flex items-center justify-between gap-4">
-            <p className="font-display text-sm font-semibold tabular-nums text-gold-500">
-              {twoDigits(index + 1)} <span className="text-steel-200">/ {twoDigits(count)}</span>
-            </p>
-
-            <div className="flex gap-2">
-              <button
-                type="button"
-                onClick={() => go(index - 1)}
-                aria-controls={stageId}
-                aria-label="Previous photo"
-                className={controlButton}
-              >
-                <ChevronLeft className="h-5 w-5" aria-hidden="true" />
-              </button>
-              <button
-                type="button"
-                onClick={() => go(index + 1)}
-                aria-controls={stageId}
-                aria-label="Next photo"
-                className={controlButton}
-              >
-                <ChevronRight className="h-5 w-5" aria-hidden="true" />
-              </button>
-              <button
-                type="button"
-                onClick={() => setPaused((value) => !value)}
-                aria-label={paused ? "Play slideshow" : "Pause slideshow"}
-                className={`hero-toggle ${controlButton}`}
-              >
-                {paused ? (
-                  <Play className="h-4 w-4" aria-hidden="true" />
-                ) : (
-                  <Pause className="h-4 w-4" aria-hidden="true" />
-                )}
-              </button>
-            </div>
+          <div className="flex justify-end gap-2">
+            <button
+              type="button"
+              onClick={() => go(index - 1)}
+              aria-controls={stageId}
+              aria-label="Previous photo"
+              className={controlButton}
+            >
+              <ChevronLeft className="h-5 w-5" aria-hidden="true" />
+            </button>
+            <button
+              type="button"
+              onClick={() => go(index + 1)}
+              aria-controls={stageId}
+              aria-label="Next photo"
+              className={controlButton}
+            >
+              <ChevronRight className="h-5 w-5" aria-hidden="true" />
+            </button>
+            <button
+              type="button"
+              onClick={() => setPaused((value) => !value)}
+              aria-label={paused ? "Play slideshow" : "Pause slideshow"}
+              className={`hero-toggle ${controlButton}`}
+            >
+              {paused ? <Play className="h-4 w-4" aria-hidden="true" /> : <Pause className="h-4 w-4" aria-hidden="true" />}
+            </button>
           </div>
 
           <div className="mt-3 grid">
