@@ -78,13 +78,7 @@ export function Navbar() {
             </ul>
           </nav>
 
-          <div className="hidden items-center gap-3 lg:flex">
-            {whatsapp ? (
-              <ButtonLink href={whatsapp} variant="outline">
-                <WhatsAppIcon className="h-4 w-4" />
-                WhatsApp Us
-              </ButtonLink>
-            ) : null}
+          <div className="hidden lg:block">
             <ButtonLink href={enquiryHref}>Enquire Now</ButtonLink>
           </div>
 
