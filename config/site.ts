@@ -20,17 +20,7 @@ const office: Address = {
   country: "IN",
 };
 
-// The company's registered address, shown beside the office and used in the privacy notice.
-const registeredOffice: Address = {
-  line1: "D3/125 Vibhav Khand",
-  line2: "Gomti Nagar",
-  city: "Lucknow",
-  state: "Uttar Pradesh",
-  postalCode: "226010",
-  country: "IN",
-};
-
-// "Lucknow, Uttar Pradesh 226010", or without the PIN code when there is none.
+// "Lucknow, Uttar Pradesh", followed by the PIN code when there is one.
 export function cityLine(address: Address) {
   return [`${address.city}, ${address.state}`, address.postalCode].filter(Boolean).join(" ");
 }
@@ -65,8 +55,6 @@ export const siteConfig = {
     emergencyPhoneHref: "tel:+918808055589",
     email: "info.krishnapowereng@gmail.com",
     office,
-    registeredOffice,
-    // Opens the office, not the registered address.
     mapsUrl:
       process.env.NEXT_PUBLIC_MAPS_URL ||
       `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mapsQuery)}`,

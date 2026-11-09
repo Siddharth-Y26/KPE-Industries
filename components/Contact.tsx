@@ -1,4 +1,4 @@
-import { ArrowUpRight, Building2, Mail, MapPin, Phone } from "lucide-react";
+import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
 import { cityLine, enquiryHref, siteConfig } from "@/config/site";
 import { whatsappUrl } from "@/lib/whatsapp";
 import { EnquiryForm } from "./EnquiryForm";
@@ -43,7 +43,7 @@ export function Enquiry() {
   );
 }
 
-// Both addresses, both phone numbers and the email. No embedded map: a link costs
+// The office, both phone numbers and the email. No embedded map: a link costs
 // nothing and loads nothing.
 export function Contact() {
   const { contact } = siteConfig;
@@ -55,7 +55,8 @@ export function Contact() {
         <SectionHeading eyebrow="Contact" title="Contact Our Team" />
 
         <div data-reveal className="mt-12 grid gap-px border border-steel-100 bg-steel-100 md:grid-cols-2">
-          <div className="bg-white p-7 lg:p-9">
+          {/* Spans both rows so phone and email stack beside it with no empty cell. */}
+          <div className="bg-white p-7 md:row-span-2 lg:p-9">
             <MapPin className="h-7 w-7 text-navy-700" strokeWidth={1.5} aria-hidden="true" />
             <h3 className="mt-6 font-display text-xs font-semibold uppercase tracking-[0.2em] text-steel-500">
               Current office
@@ -78,22 +79,6 @@ export function Contact() {
               View on Google Maps
               <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
             </a>
-          </div>
-
-          <div className="bg-white p-7 lg:p-9">
-            <Building2 className="h-7 w-7 text-navy-700" strokeWidth={1.5} aria-hidden="true" />
-            <h3 className="mt-6 font-display text-xs font-semibold uppercase tracking-[0.2em] text-steel-500">
-              Registered office
-            </h3>
-            <address className="mt-3 text-lg not-italic leading-relaxed text-navy-900">
-              {siteConfig.name}
-              <br />
-              {contact.registeredOffice.line1}
-              <br />
-              {contact.registeredOffice.line2}
-              <br />
-              {cityLine(contact.registeredOffice)}
-            </address>
           </div>
 
           <div className="bg-white p-7 lg:p-9">

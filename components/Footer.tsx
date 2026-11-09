@@ -1,4 +1,4 @@
-import { ArrowRight, Building2, Mail, MapPin, Phone } from "lucide-react";
+import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
 import { cityLine, enquiryHref, navigation, siteConfig } from "@/config/site";
 import { Logo } from "./Logo";
@@ -74,15 +74,6 @@ export function Footer() {
                 {contact.office.line2}
                 <br />
                 {cityLine(contact.office)}
-              </address>
-            </li>
-            <li className="flex items-start gap-3">
-              <Building2 className="mt-1 h-4 w-4 shrink-0 text-gold-500" aria-hidden="true" />
-              <address className="not-italic leading-relaxed">
-                <span className="block text-white">Registered office</span>
-                {contact.registeredOffice.line1}, {contact.registeredOffice.line2}
-                <br />
-                {cityLine(contact.registeredOffice)}
               </address>
             </li>
           </ul>

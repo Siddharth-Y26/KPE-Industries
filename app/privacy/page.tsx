@@ -22,8 +22,8 @@ export default function PrivacyPage() {
       <Prose>
         <h2>Who We Are</h2>
         <p>
-          This website is operated by {siteConfig.name}, {contact.registeredOffice.line1},{" "}
-          {contact.registeredOffice.line2}, {cityLine(contact.registeredOffice)}.
+          This website is operated by {siteConfig.name}, {contact.office.line1}, {contact.office.line2},{" "}
+          {cityLine(contact.office)}.
         </p>
 
         <h2>Information You Give Us</h2>
