@@ -1,4 +1,4 @@
-import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
+import { ArrowUpRight, Building2, Mail, Phone } from "lucide-react";
 import { cityLine, enquiryHref, siteConfig } from "@/config/site";
 import { whatsappUrl } from "@/lib/whatsapp";
 import { EnquiryForm } from "./EnquiryForm";
@@ -43,8 +43,8 @@ export function Enquiry() {
   );
 }
 
-// The office, both phone numbers and the email. No embedded map: a link costs
-// nothing and loads nothing.
+// The registered office, both phone numbers and the email. No embedded map: a link
+// costs nothing and loads nothing.
 export function Contact() {
   const { contact } = siteConfig;
   const [emailName, emailDomain] = contact.email.split("@");
@@ -57,18 +57,18 @@ export function Contact() {
         <div data-reveal className="mt-12 grid gap-px border border-steel-100 bg-steel-100 md:grid-cols-2">
           {/* Spans both rows so phone and email stack beside it with no empty cell. */}
           <div className="bg-white p-7 md:row-span-2 lg:p-9">
-            <MapPin className="h-7 w-7 text-navy-700" strokeWidth={1.5} aria-hidden="true" />
+            <Building2 className="h-7 w-7 text-navy-700" strokeWidth={1.5} aria-hidden="true" />
             <h3 className="mt-6 font-display text-xs font-semibold uppercase tracking-[0.2em] text-steel-500">
-              Current office
+              Registered office
             </h3>
             <address className="mt-3 text-lg not-italic leading-relaxed text-navy-900">
               {siteConfig.name}
               <br />
-              {contact.office.line1}
+              {contact.registeredOffice.line1}
               <br />
-              {contact.office.line2}
+              {contact.registeredOffice.line2}
               <br />
-              {cityLine(contact.office)}
+              {cityLine(contact.registeredOffice)}
             </address>
             <a
               href={contact.mapsUrl}
